@@ -80,21 +80,25 @@
         }
 
         a {
+            display: flex;
+            flex-direction: row;
             text-decoration: none;
         }
 
-        .card span {
+        .card .card-more {
             color: #0061ff;
             border-bottom: 1px #0061ff solid;
             padding-bottom: 3px;
+            display: flex;
+            flex-direction: row;
         }
 
-        i {
+        .arrow {
             margin-left: 6px;
-            position: absolute;
+            position: 10px;
         }
 
-        .card-footer a:hover i {
+        .card-footer a:hover .arrow {
             transform: translateX(30%);
             transition: 1s;
         }
@@ -143,17 +147,14 @@
 </head>
 
 <body>
-
     <div class="head">
         <h2>單一平台就能助你<br>在全通路輕鬆開店創業</h2>
         <span>
             從網路商店架站到實體門市管理，只需要一個平台，就能輕鬆實現開店創業，並能同步管理所有銷售管道，SHOPLINE 助你賣得更多、賣得更好！
         </span>
     </div>
-
     <div class="card-list">
         <div>
-
             <div class="card">
                 <div class="card-head">
                     <h3>免寫程式、多款版型<br>輕鬆打造全能電商網站</h3>
@@ -168,15 +169,14 @@
                     </ul>
                     <div class="card-footer">
                         <a href="https://shopline.tw/online-store-setup">
-                            <span>看看開店祕技
-                                <i>
+                            <span class="card-more">看看開店祕技
+                                <div class="arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#0061ff">
                                         <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                                     </svg>
-                                </i>
+                                </div>
                             </span>
-
                         </a>
                     </div>
                 </div>
@@ -184,8 +184,7 @@
                     <img src="./商線的圖片/500x1.webp" alt="">
                 </div>
             </div>
-
-            <section class="card">
+            <div class="card">
                 <div class="card-head">
                     <h3>支持海內外電商<br>金流、物流一次搞定</h3>
                     <p>支持在地及國際金流、物流串接服務，提供海內外顧客最便利的付款及送貨服務，加速消費者完成下單交易，大幅降低購物車放棄率！</p>
@@ -201,23 +200,19 @@
                     </div>
                     <div class="card-footer">
                         <a href="https://shopline.tw/online-store/features#payments-and-shipping">
-                            <span>了解更多金物流
-                                <i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#0061ff">
-                                        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-                                    </svg>
-                                </i>
-                            </span>
-
+                            <div class="card-more">了解更多金物流
+                            </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                    width="24px" fill="#0061ff" class="arrow">
+                                    <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                                </svg>
                         </a>
                     </div>
                 </div>
                 <div class="pic">
                     <img src="./商線的圖片/500x2.webp" alt="">
                 </div>
-            </section>
-
+            </div>
             <div class="card">
                 <div class="card-head">
                     <h3>刺激下單，創造回購<br>行銷導流、促購模組任你玩</h3>
@@ -234,15 +229,14 @@
                     </div>
                     <div class="card-footer">
                         <a href="https://shopline.tw/online-store/features#promotion">
-                            <span>看更多優惠模組
-                                <i>
+                            <span class="card-more">看更多優惠模組
+                                <div class="arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#0061ff">
                                         <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                                     </svg>
-                                </i>
+                                </div>
                             </span>
-
                         </a>
                     </div>
                 </div>
@@ -267,13 +261,13 @@
                     </div>
                     <div class="card-footer">
                         <a href="https://shopline.tw/online-store/features#promotion">
-                            <span>看更多優惠模組
-                                <i>
+                            <span class="card-more">看更多優惠模組
+                                <div class="arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#0061ff">
                                         <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                                     </svg>
-                                </i>
+                                </div>
                             </span>
 
                         </a>
@@ -300,15 +294,14 @@
                     </div>
                     <div class="card-footer">
                         <a href="https://shopline.tw/pos/features#omni-channel">
-                            <span>了解更多全通路整合
-                                <i>
+                            <span class="card-more">了解更多全通路整合
+                                <div class="arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#0061ff">
                                         <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                                     </svg>
-                                </i>
+                                </div>
                             </span>
-
                         </a>
                     </div>
                 </div>
