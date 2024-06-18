@@ -57,7 +57,6 @@
                         padding: 25px 20px 50px;
                         letter-spacing: 0.5px;
                         background-image: url(./TOYOTA_picture/black.png);
-                        /* background-color: black; */
                         color: white;
                         font-family: '微軟正黑體';
                     }
@@ -127,17 +126,6 @@
                             height: 1px;
                             background-color: #bb0404;
                         }
-                    .card-bytheway dl {
-                        list-style: square;
-                        margin-top: -10px;
-                    }
-                    .card-bytheway dd::before {
-                        content: '■';
-                        color: #bb0404;
-                        font-size: 50%;
-                        margin-left: -12px;
-                        vertical-align: text-bottom;
-                    }
                     .card-bytheway dt{
                         margin: 5px 20px 5px;
                         padding: 3px;
@@ -149,10 +137,18 @@
                         font-weight: 10;
                     }
                     .card-bytheway dd {
+                        padding-right: 30px;
                         margin-left: 40px;
+                        color: #6e6e6e;
+                        font-family: '微軟正黑體';
+                        font-weight: bolder;
                     }
-                    .card-bytheway li {
-                        margin: 5px 37px;
+                    .card-bytheway dd::before {
+                        content: '■';
+                        color: #bb0404;
+                        font-size: 40%;
+                        margin-left: -12px;
+                        vertical-align: text-top;
                     }
             .card-reverse {
                 width: 960px;
@@ -199,24 +195,15 @@
                 .card-reverse .card-picture {
                     margin-left: 8px;
                 }
-        #top {
-            font-size: 50px;
-            position: fixed;
-            right: 0;
-            bottom: 0;
-        }
     </style>
 </head>
 <body>
-
-    <a href="#" id="top">TOP</a>
-
     <div class="card-list">
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">01</h2>
-                    <h2 class="card-begin">操控樂趣</h2>
+                    <span class="card-begin">操控樂趣</span>
                 </div>
                 <div class="card-content">
                     <h3>人人滿意的駕駛體驗</h3>
@@ -235,7 +222,7 @@
             <div class="card-bytheway">
                 <div>
                     <h4 class="card-bytheway-title">因為我們做了這些革新</h4>
-                    <h4 class="card-bytheway-line"></h4>
+                    <span class="card-bytheway-line"></span>
                 </div>
                 <dl>
                     <dt>低重心設計</dt>
@@ -252,7 +239,7 @@
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">02</h2>
-                    <h2 class="card-begin">安全守護</h2>
+                    <span class="card-begin">安全守護</span>
                 </div>
                 <div class="card-content">
                     <h3>行車更安心的高剛性車體</h3>
@@ -270,7 +257,7 @@
             <div class="card-bytheway">
                 <div>
                     <h4 class="card-bytheway-title">因為我們做了這些革新</h4>
-                    <h4 class="card-bytheway-line"></h4>
+                    <span class="card-bytheway-line"></span>
                 </div>
                 <dl>
                     <dt>主動安全</dt>
@@ -285,7 +272,7 @@
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">03</h2>
-                    <h2 class="card-begin">乘坐舒適</h2>
+                    <span class="card-begin">乘坐舒適</span>
                 </div>
                 <div class="card-content">
                     <h3>令人放鬆舒適的車室空間</h3>
@@ -304,7 +291,7 @@
             <div class="card-bytheway">
                 <div>
                     <h4 class="card-bytheway-title">因為我們做了這些革新</h4>
-                    <h4 class="card-bytheway-line"></h4>
+                    <span class="card-bytheway-line"></span>
                 </div>
                 <dl>
                     <dt>駕駛位置最佳化</dt>
@@ -321,7 +308,7 @@
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">04</h2>
-                    <h2 class="card-begin">以人為本</h2>
+                    <span class="card-begin">以人為本</span>
                 </div>
                 <div class="card-content">
                     <h3>使用者導向的貼心設計</h3>
@@ -340,7 +327,7 @@
             <div class="card-bytheway">
                 <div>
                     <h4 class="card-bytheway-title">因為我們做了這些革新</h4>
-                    <h4 class="card-bytheway-line"></h4>
+                    <span class="card-bytheway-line"></span>
                 </div>
                 <dl>
                     <dt>優異油耗表現</dt>
@@ -355,7 +342,7 @@
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">05</h2>
-                    <h2 class="card-begin">引以為傲</h2>
+                    <span class="card-begin">引以為傲</span>
                 </div>
                 <div class="card-content">
                     <h3>極具吸引力的精心設計</h3>
@@ -374,7 +361,7 @@
             <div class="card-bytheway">
                 <div>
                     <h4 class="card-bytheway-title">因為我們做了這些革新</h4>
-                    <h4 class="card-bytheway-line"></h4>
+                    <span class="card-bytheway-line"></span>
                 </div>
                 <dl>
                     <dt>設計概念</dt>
@@ -384,7 +371,6 @@
                 </dl>
             </div>
         </div>
-
     </div>
 
     <script>
