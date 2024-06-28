@@ -150,50 +150,66 @@
                         margin-left: -12px;
                         vertical-align: text-top;
                     }
-            .card-reverse {
+            .card:nth-child(even) {
                 width: 960px;
-                height: 810px;
                 margin: auto;
                 position: relative;
             }
-                .card-reverse .card-header {
-                        width: 34%;
-                        height: 387px;
-                        position: absolute;
-                        right: 0;
-                        z-index: 1;
+                .card:nth-child(even) .card-header {
+                    width: 38%;
+                    
+                    position: relative;
+                    z-index: 1;
+                    /* width: 34%;
+                    height: 387px;
+                    position: absolute;
+                    right: 0;
+                    z-index: 1; */
                 }
-                .card-reverse .card-title {
+                .card:nth-child(even) .card-title {
                     display: flex;
                     flex-direction: row-reverse;
                 }
-                .card-reverse .card-picture {
-                    margin-left: 184px;
+                .card:nth-child(even) .card-picture {
+                    margin-left: 8px;
                     transform: translateY(135px);
+
                 }
-                .card-reverse .card-icon {
+                .card:nth-child(even) .card-icon {
+                    width: 58px;
+                    height: 43px;
                     position: relative;
+                    left: 855px;
+                    bottom: 485px;
+                    background-color: #bb0404;
+                    /* position: relative;
                     left: 0;
                     top: -90px;
-                    z-index: 2;
+                    z-index: 2; */
                 }
-                .card-reverse .card-bytheway {
+                .card:nth-child(even) .card-bytheway {
                     width: 682px;
                     height: fit-content;
                     background-color: #eee;
+                    position: absolute;
+                    top: 533px;
+                    left: 48px;
                     padding-bottom: 15px;
-                    left: 278px;
+                    /* width: 682px;
+                    height: fit-content;
+                    position: relative;
+                    background-color: #eee;
+                    padding-bottom: 15px;
+                    top: 20px;
+                    left: 48px; */
                 }
-                .card-reverse .card-back {
+                .card:nth-child(even) .card-back {
                     width: 520px;
                     height: 415px;
                     background-color: #f5f5f5;
                     margin-top: 10px;
-                    margin-right: 163px;
+                    right: 0;
                     z-index: -1;
-                }
-                .card-reverse .card-picture {
-                    margin-left: 8px;
                 }
     </style>
 </head>
@@ -235,7 +251,7 @@
             </div>
         </div>
 
-        <div class="card-reverse">
+        <div class="card">
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">02</h2>
@@ -304,7 +320,7 @@
             </div>
         </div>
 
-        <div class="card-reverse">
+        <div class="card">
             <div class="card-header">
                 <div class="card-title">
                     <h2 class="card-number">04</h2>

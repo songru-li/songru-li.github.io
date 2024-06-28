@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .header-top {
+            width: 100%;
+            max-height: 10%;
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+            border-bottom: 2px solid #eee;
+            position: fixed;
+            top: 0;
+            z-index: 3;
+        }
+            .search {
+                width: 5%;
+                margin: 2%;
+            }
+                .search-logo img{
+                    width: 80%;
+                }
+                .search-p {
+                    font-size: 10px;
+                    display: none;
+                }
+            .header-logo {
+                width: 76%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header-logo img {
+                width: 60%;
+            }
+            .hawaiianIsland {
+                display: none;
+            }
+            .about {
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .about a {
+                font-size: 12px;
+                color: red;
+                text-decoration: none;
+            }
+        .global {
+            display: none;
+        }
+        .title {
+            margin-top: 120px;
+        }
+            .title h2 {
+                width: 95%;
+                margin: 20px auto;
+                font-size: 800%;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 15;
+                line-height: 0.9em;
+            }
+            .title h1 {
+                width: 95%;
+                margin: 30px auto;
+                font-size: 120%;
+            }
+        .main-top {}
+            .main-top img {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .main-top p {
+                margin: auto 2.5%;
+                line-height: 2em;
+            }
+        .main-bot {
+            width: 100%;
+            margin: 150px auto 100px;
+            background-color: #f9f6f5;
+        }
+            .main-bot-post > img {
+                display: flex;
+                width: 95%;
+                margin: auto;
+                border-radius: 3%;
+                transform: translateY(-120px);
+            }
+            .main-bot-post h3 {
+                width: 95%;
+                margin: -90px auto 10px;
+            }
+            .main-bot-post h3 br {
+                display: none;
+            }
+            .main-bot-post p {
+                width: 95%;
+                margin: auto;
+                line-height: 2em;
+            }
+            .main-bot-about {
+                width: 95%;
+                margin: 15px auto;
+            }
+        .right-arrow a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 15px;
+            color: #f70;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .right-arrow img {
+            border: 1px solid #f70;
+            border-radius: 50%;
+            margin-left: 10px;
+            width: 15px;
+            vertical-align: top;
+        }
+            .main-keep-title {
+                width: 95%;
+                margin: 50px auto;
+                font-weight: bold;
+                font-size: 160%;
+                line-height: 1.3em;
+            }
+                .main-keep-title h2:nth-child(2) {
+                    color: #f70;
+                }
+            .card-box-title {
+                margin: auto;
+                width: 95%;
+                display: flex;
+                justify-content: center;
+            }
+            .card-box {
+                padding: 10px;
+                margin-top: 40px;
+                word-spacing: nowrap;
+                overflow-y: auto;
+                white-space: nowrap;
+                background-color: #f9f6f5;
+            }
+            .card-box a {
+                text-decoration: none;
+            }
+            .card-box::-webkit-scrollbar {
+                display: none;
+            }
+                .card{
+                    display: inline-flex;
+                    max-width: 296px;
+                    position: relative;
+                    margin: 20px 10px;
+                }
+                    .card-pic img{
+                        width: 100%;
+                        vertical-align: top;
+                        border-radius: 3%;
+                    }
+                    .card-txt {
+                        display: flex;
+                        flex-wrap: wrap;
+                        color: #fff;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        white-space: wrap;
+                        margin: 20px;
+                    }
+                        .card-title {
+                            font-size: 22px;
+                            font-weight: bold;
+                        }
+                        .card-more {
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            font-size: 12px;
+                            font-weight: bolder;
+                            text-align: center;
+                            border: 1px solid #fff;
+                            border-top-left-radius: 18% 50%;
+                            border-top-right-radius: 18% 50%;
+                            border-bottom-right-radius: 18% 50%;
+                            border-bottom-left-radius: 18% 50%;
+                            padding: 0 15px;
+                            position: relative;
+                            margin-top: -120px;
+                        }
+                        .card-footer {
+                            font-size: 10px;
+                            color: #aaa;
+                            position: absolute;
+                            bottom: 0;
+                        }
+                    .card-txt p {
+                        background-color: #0008;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: -20px;
+                        opacity: 0;
+                        border-radius: 3%;
+                        padding: 200px 20px 0;
+                    }
+                    .card-txt p:hover {
+                        opacity: 1;
+                    }
+                    .card-txt:hover .card-more {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                    .card-txt:hover .card-more img{
+                        background-color: #00f;
+                        filter: invert(100%);
+                    }
+        .latest {
+            width: 95%;
+            margin: auto;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+        }
+        .latest h3 {
+            font-size: 25px;
+
+        }
+        .container {
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            margin: 50px auto 100px;
+        }
+            .post-title {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        .post-card-list {
+            display: grid;
+            grid-template: repeat(0,auto)/repeat(4,1fr);
+            gap: 2.5%;
+            margin: 50px auto;
+        }
+            .tax-icon {
+                font-size: 15px;
+                color: #000;
+            }
+            .tax-icon img {
+                vertical-align: top;
+            }
+            .post-card {
+            }
+            .post-card.active {
+                grid-area: 1/1/span 2/ span 2;
+            }
+            .post-card-pic img{
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .post-card-list a {
+                text-decoration: none;
+            }
+            .post-card-txt {
+                color: #000;
+                padding: 10px 0;
+            }
+            .post-card-txt p {
+                margin: 10px 0;
+            }
+            .post-card-txt time {
+                font-size: 15px;
+            }
+        @media screen and (min-width:768px) {
+            .hawaii {
+                position: relative;
+            }
+            .header-top {
+                position: relative;
+            }
+            .header-logo {
+                margin: auto;
+                justify-content: center;
+            }
+            .search {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 30%;
+            }
+            .search-p {
+                margin-left: 20px;
+                display: flex;
+            }
+            .hawaiianIsland {
+                display: flex;
+                align-items: center;
+                direction: rtl;
+                width: 15%;
+            }
+            .hawaiianIsland img {
+                width: 100%;
+            }
+            .about {
+                display: none;
+            }
+            .global {
+                width: 100%;
+                height: 60px;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 15px;
+                position: sticky;
+                top: 0;
+                z-index: 3;
+                background-color: #fff;
+            }
+            .global a {
+                text-decoration: none;
+            }
+            .global a:first-child {
+                padding-left: 2.5%;
+                font-weight: bold;
+                color: #f70;
+            }
+            .global a:last-child {
+                padding-right: 2.5%;
+                font-weight: bold;
+                color: #999;
+            }
+            .global ul {
+                width: 65%;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2%;
+            }
+            .global ul li {
+                list-style: none;
+            }
+            .title {
+                display: flex;
+                flex-direction: row-reverse;
+                position: relative;
+                z-index: 1;
+            }
+            .title h2 {
+                font-size: 580%;
+                width: 65%;
+            }
+            .title h1 {
+                width: 35%;
+                padding-top: 20px;
+                padding-left: 4%;
+            }
+            .main-top {
+                display: flex;
+                flex-direction: row;
+                position: relative;
+            }
+            .main-top img {
+                transform: translateY(-60px);
+                width: 70%;
+                margin-bottom: 0;
+            }
+            .main-top div {
+                font-size: 80%;
+                height: 75%;
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                margin: 50px 5%;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 5%;
+                right: 2.5%;
+            }
+            .main-top div p {
+                margin: 0;
+            }
+            .main-top div p br {
+                display: none;
+            }
+            .main-bot {
+                margin-top: 0;
+                transform: translateY(-60px);
+            }
+            .main-bot-post > img {
+                width: 50%;
+                margin-left: 2.5%;
+            }
+            .main-bot-post h3 {
+                width: 42.5%;
+                margin: -250px 55% 0;
+            }
+            .main-bot-post h3 br {
+                display: flex;
+            }
+            .main-bot-post p {
+                width: 42.5%;
+                margin: 0 55% 0;
+                line-height: 2em;
+            }
+            .main-bot-about {
+                width: 42.5%;
+                margin: 0 55% 0;
+            }
+            .main-keep-title {
+                font-size: 300%;
+            }
+            .post-title div {
+                display: flex;
+                flex-direction: row;
+                align-items:last baseline;
+                gap: 10px;
+            }
+            .post-card-list {
+                grid-template: repeat(1,auto)/repeat(4,1fr);
+            }
+            .container:nth-child(odd) .post-card-list{
+                direction: rtl ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hawaii">
+        <header>
+            <div class="header-top">
+                <div class="search">
+                    <div class="search-logo">
+                        <img src="./malamahawaii_picture/search.svg" alt="">
+                    </div>
+                    <div class="search-p">
+                        <p>ハワイ州 <br>レスポンシブル・ツーリズム<br>情報サイト</p>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <a href=""><img src="./malamahawaii_picture/logo.svg" alt=""></a>
+                </div>
+                <div class="about">
+                    <a href="">マラマハワイとは</a>
+                </div>
+                <div class="hawaiianIsland">
+                    <a href=""><img src="./malamahawaii_picture/hawaiianIsland.png" alt=""></a>
+                </div>
+            </div>
+        </header>
+        <div class="global">
+            <a href="">マラマハワイとは</a>
+            <ul>
+                <li>旅行者にできること</li>
+                <li>取組み紹介</li>
+                <li>関連映像</li>
+                <li>コミュニティ</li>
+                <li>特集</li>
+            </ul>
+            <a href="">業界関係の方へ</a>
+        </div>
+        <div class="title">
+            <h2>Re-Imagine<br>Hawai‘i</h2>
+            <h1>ハワイを想うことは、<br>ハワイの未来を創ること。</h1>
+        </div>
+        <div class="main-top">
+            <img src="./malamahawaii_picture/main.jpg" alt="">
+            <div>
+                <p>美しい楽園ハワイは、<br>永遠ではありません。</p>
+                <p>山から海まで、<br>ハワイに生きる美しい自然や文化に</p>
+                <p>「マラマ = 思いやりの心」を持って接すること。</p>
+                <p>レスポンシブル・ツーリズムは、<br>そんな思いやりの心を</p>
+                <p>旅の中で実践していく、<br>新しい観光のカタチです。</p>
+                <p>ハワイが何十年後も、何百年後も、<br>素晴らしい楽園であるよう</p>
+                <p>旅行者のみなさんだから<br>できることがあります。</p>
+            </div>
+        </div>
+        <div class="main-bot">
+            <div class="main-bot-title">
+                <div class="main-bot-post">
+                    <img src="./malamahawaii_picture/main_turtle.jpg" alt="">
+                    <h3>美しいハワイを <br>未来へとつなぐために<br>わたしたちができること</h3>
+                    <p>ハワイは世界の絶滅危惧種の宝庫と呼ばれるほど、貴重な生物がたくさん生息しています。ウミガメ、イルカ、クジラ、サンゴ礁。これらを守るためにも、知ってもらいたいことやルールがあります。これからは旅行者にも、ハワイの島々の自然や文化を守り、現地住民が大切にする場所を敬い、美しいハワイを未来へつなげていく行動が求められます。</p>
+                    <p>「レスポンシブル・ツーリズム」一緒にはじめませんか。</p>
+                    <div class="main-bot-about right-arrow">
+                        <a href="">
+                            <span>マラマハワイとは</span>
+                            <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main-keep-title">
+                <h2>What We Can Do to</h2>
+                <h2>Keep Hawai‘i Beautiful</h2>
+                <h2>for the Future.</h2>
+            </div>
+            <div class="card-box-title">About Mālama Hawai‘i</div>
+            <div class="card-box">
+                <a href="">
+                    <div class="card">
+                        <div class="card-pic">
+                            <img src="./malamahawaii_picture/about_bg01.jpg" alt="">
+                        </div>
+                        <div class="card-txt">
+                            <span class="card-title">責任ある旅行“レスポンシブル・ツーリズム”について</span>
+                            <span class="card-more right-arrow">
+                                <span>詳しく見る</span>
+                                <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                            </span>
+                            <p>観光客もツーリズムを構成する要素であると捉え、観光客が意識や行動に責任を持つことで、より良い観光地形成を行っていこうという考え方です。</p>
+                            <span class="card-footer">WHAT IS “RESPONSIBLE TOURISM”</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="card">
+                        <div class="card-pic">
+                            <img src="./malamahawaii_picture/about_bg02.jpg" alt="">
+                        </div>
+                        <div class="card-txt">
+                            <span class="card-title">ハワイ独自の取り組み“アロハプラスチャレンジ”について</span>
+                            <span class="card-more right-arrow">
+                                <span>詳しく見る</span>
+                                <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                            </span>
+                            <p>SDG’sを基準にハワイ州が独自のゴールを設定した特別プログラムです。官民一体となり経済、社会、環境の側面からを持続可能な社会を目指します。</p>
+                            <span class="card-footer">ABOUT “ALOHA + CHALLENGE”</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="card">
+                        <div class="card-pic">
+                            <img src="./malamahawaii_picture/about_bg03.jpg" alt="">
+                        </div>
+                        <div class="card-txt">
+                            <span class="card-title">
+                                    ハワイ州観光局からのメッセージ
+                                </span>
+                            <span class="card-more right-arrow">
+                                <span>詳しく見る</span>
+                                <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                            </span>
+                            <p>歴史的にも深い関係を持つ日本とハワイが、これからも共に支え合い、高め合う良い関係が継続できるようハワイ州観光局もサポートしていきます。</p>
+                            <span class="card-footer">MESSAGE FROM HAWAI‘I TOURISM JAPAN</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="latest">
+            <h3>LATEST</h3>
+            <div class="container">
+                <div class="post-title">
+                    <div>
+                        <h3>旅行者にできること</h3>
+                        <span>What Travelers Can Do</span>
+                    </div>
+                    <div class="right-arrow">
+                        <a href="">
+                            <span>すべて見る</span>
+                            <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="post-card-list">
+                    <div class="post-card active">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_event.svg" alt="">
+                                イベント
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-01-1.png" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>【4月22日はアースデイ】ハワイでの環境にやさしいイベントを紹介！</h4>
+                                <p>毎年4月22日はアースデイ(Earth Day)！地球や環境のことを考え、一人一人が何ができるかを考えたり行動を起こすために生まれた1日。1970年にユネスコに</p>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_event.svg" alt="">
+                                イベント
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-01-2.jpg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_ocean.svg" alt="">
+                                海
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-01-3.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
+                                <time datetime="2023.11.09">2023.11.09</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_other.svg" alt="">
+                                その他
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-01-4.png" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+                                <time datetime="2023.08.18">2023.08.18</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-01-5.png" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>2023年7月後半～9月にハワイで開催されるカルチャーイベント</h4>
+                                <time datetime="2023.07.20">2023.07.20</time>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="post-title">
+                    <div>
+                        <h3>旅行者にできること</h3>
+                        <span>What Travelers Can Do</span>
+                    </div>
+                    <div class="right-arrow">
+                        <a href="">
+                            <span>すべて見る</span>
+                            <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="post-card-list">
+                    <div class="post-card active">
+                        <a href="">
+                            <span class="tax-icon">
+                                シーライフ・パーク・ハワイ
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-02-1.jpg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>シーライフパーク、ホヌ（ウミガメ）保護・繁殖プログラム発足50周年プログラム開催</h4>
+                                <p>オアフ島東海岸にある海洋テーマパーク「シーライフ・パーク」では、今年ホヌ（ウミガメ）保護・繁殖プログラム発足50周年を迎えました。これを機に環境保護団体「808</p>
+                                <time datetime="2024.01.15">2024.01.15</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                ジャルパック
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-02-2.jpeg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>【チームJALハワイ】ビーチクリーンアップ活動で地元コミュニティに貢献</h4>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_ocean.svg" alt="">
+                                海
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-02-3.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
+                                <time datetime="2023.11.09">2023.11.09</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_other.svg" alt="">
+                                その他
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-02-4.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+                                <time datetime="2023.08.18">2023.08.18</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-02-5.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>2023年7月後半～9月にハワイで開催されるカルチャーイベント</h4>
+                                <time datetime="2023.07.20">2023.07.20</time>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="post-title">
+                    <div>
+                        <h3>旅行者にできること</h3>
+                        <span>What Travelers Can Do</span>
+                    </div>
+                    <div class="right-arrow">
+                        <a href="">
+                            <span>すべて見る</span>
+                            <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="post-card-list">
+                    <div class="post-card active">
+                        <a href="">
+                            <span class="tax-icon">
+                                ハワイ州観光局
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-03-1.jpg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>マウイ郡、ハワイ島、海洋生物に影響与える日焼け止めの流通禁止を発表</h4>
+                                <p>2022年10月1日からマウイ郡ノンミネラルの日焼け止めの流通・販売禁止条例を施行 マウイ郡の条例5306号により、2022年10月1日からマウイ島、ラナイ島、</p>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_event.svg" alt="">
+                                イベント
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-03-2.jpeg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_ocean.svg" alt="">
+                                海
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-03-3.png" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
+                                <time datetime="2023.11.09">2023.11.09</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_other.svg" alt="">
+                                その他
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-03-4.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+                                <time datetime="2023.08.18">2023.08.18</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-03-5.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>2023年7月後半～9月にハワイで開催されるカルチャーイベント</h4>
+                                <time datetime="2023.07.20">2023.07.20</time>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="post-title">
+                    <div>
+                        <h3>旅行者にできること</h3>
+                        <span>What Travelers Can Do</span>
+                    </div>
+                    <div class="right-arrow">
+                        <a href="">
+                            <span>すべて見る</span>
+                            <img src="./malamahawaii_picture/right_arrow_short.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="post-card-list">
+                    <div class="post-card active">
+                        <a href="">
+                            <span class="tax-icon">
+                                アロハ・オーシャン・プラス(Aloha Ocean Plus)
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-04-1.jpeg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>ハワイの海洋保護につながるロコデザイナーによる　　エコボトルが新登場</h4>
+                                <p>ハワイ発サーフブランドのローカルモーションハワイから、ハワイの海洋生物をモチーフにしたエコボトルが限定発売されました。 人気ブランド”アドベンチャーハワイ”のボ</p>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_event.svg" alt="">
+                                イベント
+                            </span>
+                            <span class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-04-2.jpg" alt="">
+                            </span>
+                            <div class="post-card-txt">
+                                <h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
+                                <time datetime="2024.03.21">2024.03.21</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_ocean.svg" alt="">
+                                海
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-04-3.jpeg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
+                                <time datetime="2023.11.09">2023.11.09</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <span class="tax-icon">
+                                <img src="./malamahawaii_picture/icon_other.svg" alt="">
+                                その他
+                            </span>
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-04-4.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+                                <time datetime="2023.08.18">2023.08.18</time>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="post-card">
+                        <a href="">
+                            <div class="post-card-pic">
+                                <img src="./malamahawaii_picture/post-card-04-5.jpg" alt="">
+                            </div>
+                            <div class="post-card-txt">
+                                <h4>2023年7月後半～9月にハワイで開催されるカルチャーイベント</h4>
+                                <time datetime="2023.07.20">2023.07.20</time>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
