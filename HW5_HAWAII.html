@@ -11,7 +11,6 @@
 		}
 		.header-top {
 			width: 100%;
-			max-height: 10%;
 			display: flex;
 			flex-direction: row;
 			background-color: #fff;
@@ -200,6 +199,10 @@
 			position: relative;
 			margin-top: -120px;
 		}
+		.card-txt:hover .card-more {
+			background-color: #fff;
+			color: #000;
+		}
 		.card-footer {
 			font-size: 10px;
 			color: #aaa;
@@ -220,14 +223,6 @@
 		}
 		.card-txt p:hover {
 			opacity: 1;
-		}
-		.card-txt:hover .card-more {
-			background-color: #fff;
-			color: #000;
-		}
-		.card-txt:hover .card-more img{
-			background-color: #00f;
-			filter: invert(100%);
 		}
 		.latest {
 			width: 95%;
@@ -273,7 +268,7 @@
 			max-width: 100%;
 			aspect-ratio: 16/9;
 			object-fit: cover;
-      border-radius: 2.5%;
+			border-radius: 2.5%;
 			box-sizing: border-box;
 			vertical-align: top;
 		}
@@ -297,6 +292,16 @@
 			.hawaii {
 				position: relative;
 			}
+			.search {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				width: 25%;
+			}
+			.search-p {
+				margin-left: 20px;
+				display: flex;
+			}
 			.header-top {
 				position: relative;
 			}
@@ -304,24 +309,18 @@
 				margin: auto;
 				justify-content: center;
 			}
-			.search {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				width: 30%;
-			}
-			.search-p {
-				margin-left: 20px;
-				display: flex;
+			.header-logo img {
+				width: 80%;
 			}
 			.hawaiianIsland {
 				display: flex;
+				justify-content: end;
 				align-items: center;
-				direction: rtl;
 				width: 15%;
+				padding-right: 2%;
 			}
 			.hawaiianIsland img {
-				width: 100%;
+				max-height: 5vw;
 			}
 			.about {
 				display: none;
@@ -372,33 +371,33 @@
 				z-index: 1;
 			}
 			.title h2 {
-        font-size: 10vw;
+				font-size: 10vw;
 				width: 65%;
 			}
 			.title h1 {
 				width: 35%;
 				padding-top: 20px;
 				padding-left: 4%;
-        font-size: 2vw;
+				font-size: 2vw;
 			}
 			.main-top {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
 			}
-      .main-top > div {
-        width: 70%;
-      }
+			.main-top > div {
+				width: 70%;
+			}
 			.main-top div img {
 				transform: translateY(-60px);
 				margin-bottom: 0;
 			}
 			.main-top div:nth-child(2) {
-        max-width: 20%;
+				max-width: 20%;
 				font-size: 80%;
 				writing-mode: vertical-rl;
 				text-orientation: upright;
-        margin: auto;
+				margin: auto;
 			}
 			.main-top div p {
 				margin: 0;
@@ -458,41 +457,47 @@
 				display: flex;
 				justify-content: center;
 			}
-		}
-    @media screen and (min-width:1200px) {
-      .title h2 {
-        font-size: 800%;
-				width: 60%;
-        transition: 1s;
+			.hawaiianIsland img {
+				max-height: 3.5vw;
 			}
-      .title h1 {
+		}
+		@media screen and (min-width:1200px) {
+			.hawaiianIsland img {
+				max-height: 3.5vw;
+			}
+			.title h2 {
+				font-size: 800%;
+				width: 60%;
+				transition: 1s;
+			}
+			.title h1 {
 				width: 25%;
 				padding-top: 60px;
-        font-size: 150%;
+				font-size: 150%;
 				padding-left: 15%;
-        transition: 1s;
+				transition: 1s;
 			}
-      .main-top div:nth-child(2) {
-        max-width: 20%;
+			.main-top div:nth-child(2) {
+				max-width: 20%;
 				font-size: 100%;
 				writing-mode: vertical-rl;
 				text-orientation: upright;
-        transition: 1s;
+				transition: 1s;
 			}
-      .main-bot {
-        width: 70%;
-        padding: 0 15%;
-      }
-      .latest {
-        width: 70%;
-      }
-      .main-keep-title {
-        font-size: 2.5vw;
-      }
-      .card-title {
-        font-size: 1.3vw;
-      }
-    }
+			.main-bot {
+				width: 70%;
+				padding: 0 15%;
+			}
+			.latest {
+				width: 70%;
+			}
+			.main-keep-title {
+				font-size: 2.5vw;
+			}
+			.card-title {
+				font-size: 1.3vw;
+			}
+		}
 	</style>
 </head>
 <body>
