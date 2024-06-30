@@ -5,12 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div {
+            width: 30%;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
     <div>
         <h1>終極密碼遊戲</h1>
-        <input type="number" id="guess" min="1" max="100">
+        <input type="number" id="guess" min="1" max="100" oninput="
+            if(value > 100) value = 100; //如果數值大於100，顯示100
+            if(value.length > 3) value = value.slice(0,3); //如果長度大於3碼，則取索引0,1,2，不包含3的字符
+            if(value < 0) value = 1;
+            if(this.value.length > 1 && this.value.startsWith('0')) this.value = this.value.slice(1)">
         <button onclick="guessNumber()">猜數字</button>
         <button onclick="resetGame()">重新開始</button>
         <p id="result"></p>
@@ -34,11 +44,11 @@
             if (guess < secretNumber) {
                 document.getElementById('result').innerText = "你猜的數字太小了！新的範圍是 " + guess + " 到 " + max;
                 min = parseInt(guess);
-            //如果猜測數字大於神秘數字，更新結果並縮小範圍
+                //如果猜測數字大於神秘數字，更新結果並縮小範圍
             } else if (guess > secretNumber) {
                 document.getElementById('result').innerText = "你猜的數字太大了！新的範圍是 " + min + " 到 " + guess;
                 max = parseInt(guess);
-            //如果猜測數字等於神秘數字，顯示勝利
+                //如果猜測數字等於神秘數字，顯示勝利
             } else {
                 document.getElementById('result').innerText = "恭喜你，你猜對了！神秘數字就是 " + secretNumber;
                 alert(`恭喜你，你猜對了！神秘數字就是 "${secretNumber}`)
