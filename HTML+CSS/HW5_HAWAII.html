@@ -92,7 +92,7 @@
 			display: flex;
 			width: 95%;
 			margin: auto;
-			border-radius: 3%;
+			border-radius: 10px;
 			transform: translateY(-120px);
 		}
 		.main-bot-post h3 {
@@ -168,7 +168,7 @@
 		.card-pic img{
 			width: 100%;
 			vertical-align: top;
-			border-radius: 3%;
+			border-radius: 10px;
 		}
 		.card-txt {
 			display: flex;
@@ -221,8 +221,8 @@
 			right: 0;
 			margin: -20px;
 			opacity: 0;
-			border-radius: 3%;
-			padding: 200px 20px 0;
+			border-radius: 10px;
+			padding: 220px 20px 0;
 		}
 		.card-txt p:hover {
 			opacity: 1;
@@ -237,7 +237,6 @@
 			font-size: 25px;
 		}
 		.container {
-			padding-top: 20px;
 			border-top: 2px solid #eee;
 			margin: 50px auto;
 		}
@@ -251,29 +250,34 @@
 		}
 		.post-card-list {
 			display: grid;
-			grid-template: repeat(0,auto)/repeat(4,1fr);
+			grid-template-rows: repeat(1,1fr);
 		}
 		.tax-icon {
+			width: 100%;
+			height: 25px;
 			font-size: 15px;
 			color: #000;
 		}
 		.tax-icon img {
+			height: 20px;
 			vertical-align: top;
 		}
 		.post-card {
 			width: 95%;
-			margin: 2.5%;
+			margin: 10px auto;
 		}
-		.post-card.active {
+		.active {
+			width: 97.5%;
+			margin: 1.25% auto 0;
 			grid-area: 1 / 1 / span 2 / span 2;
 		}
 		.post-card-pic img{
-			max-width: 100%;
+			width: 100%;
 			aspect-ratio: 16/9;
 			object-fit: cover;
-			border-radius: 2.5%;
-			box-sizing: border-box;
+			border-radius: 10px;
 			vertical-align: top;
+			margin-bottom: 10px;
 		}
 		.post-card-pic img:hover {
 			opacity: 0.6;
@@ -283,12 +287,9 @@
 		}
 		.post-card-txt {
 			color: #000;
-			padding: 10px 0;
-		}
-		.post-card-txt p {
-			margin: 10px 0;
 		}
 		.post-card-txt time {
+			margin-top: auto;
 			font-size: 15px;
 		}
 		@media screen and (min-width:768px) {
@@ -400,7 +401,7 @@
 			}
 			.main-top div:nth-child(2) {
 				max-width: 20%;
-				font-size: 80%;
+				font-size: 1.5vw;
 				writing-mode: vertical-rl;
 				text-orientation: upright;
 				margin: auto;
@@ -491,7 +492,7 @@
 			}
 			.main-top div:nth-child(2) {
 				max-width: 20%;
-				font-size: 100%;
+				font-size: 1vw;
 				writing-mode: vertical-rl;
 				text-orientation: upright;
 				transition: 1s;
@@ -654,13 +655,13 @@
 				<div class="post-card-list">
 					<div class="post-card active">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<img src="./malamahawaii_picture/icon_event.svg" alt="">
 								<span>イベント</span>
-							</span>
-							<span class="post-card-pic">
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-1.png" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
 								<h4>【4月22日はアースデイ】ハワイでの環境にやさしいイベントを紹介！</h4>
 								<p>毎年4月22日はアースデイ(Earth Day)！地球や環境のことを考え、一人一人が何ができるかを考えたり行動を起こすために生まれた1日。1970年にユネスコに</p>
@@ -670,54 +671,54 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<img src="./malamahawaii_picture/icon_event.svg" alt="">
 								<span>イベント</span>
-							</span>
-							<span class="post-card-pic">
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-2.jpg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
-								<h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
+								<h4>プリンス・クヒオ・デイ・セレブレーション(Prince Kuhio Day)</h4>
 								<time datetime="2024.03.21">2024.03.21</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
-								<img src="./malamahawaii_picture/icon_ocean.svg" alt="">
+							<div class="tax-icon">
+								<img src="./malamahawaii_picture/icon_event.svg" alt="">
 								<span>海</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-3.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
+								<h4>グラム発足50周年プログラム発月間　〜日常でできること〜</h4>
 								<time datetime="2023.11.09">2023.11.09</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<img src="./malamahawaii_picture/icon_other.svg" alt="">
 								<span>その他</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-4.png" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+								<h4>マウイ島の山火事救援金、日本円で受付グラム発足</h4>
 								<time datetime="2023.08.18">2023.08.18</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ルチャー</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-5.png" alt="">
 							</div>
@@ -745,10 +746,10 @@
 				<div class="post-card-list">
 					<div class="post-card active">
 						<a href="">
-							<span class="tax-icon">シーライフ・パーク・ハワイ</span>
-							<span class="post-card-pic">
+							<div class="tax-icon">シーライフ・パーク・ハワイ</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-1.jpg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
 								<h4>シーライフパーク、ホヌ（ウミガメ）保護・繁殖プログラム発足50周年プログラム開催</h4>
 								<p>オアフ島東海岸にある海洋テーマパーク「シーライフ・パーク」では、今年ホヌ（ウミガメ）保護・繁殖プログラム発足50周年を迎えました。これを機に環境保護団体「808</p>
@@ -758,12 +759,12 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ジャルパック</span>
-							</span>
-							<span class="post-card-pic">
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-2.jpeg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
 								<h4>【チームJALハワイ】ビーチクリーンアップ活動で地元コミュニティに貢献</h4>
 								<time datetime="2024.03.21">2024.03.21</time>
@@ -772,9 +773,9 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>キュメンタリ</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-3.jpg" alt="">
 							</div>
@@ -790,7 +791,7 @@
 								<img src="./malamahawaii_picture/post-card-02-4.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+								<h4>マウイ島の山火事救援金、日本円で受付グラム発足</h4>
 								<time datetime="2023.08.18">2023.08.18</time>
 							</div>
 						</a>
@@ -824,12 +825,12 @@
 				<div class="post-card-list">
 					<div class="post-card active">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ハワイ州観光局</span>
-							</span>
-							<span class="post-card-pic">
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-03-1.jpg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
 								<h4>マウイ郡、ハワイ島、海洋生物に影響与える日焼け止めの流通禁止を発表</h4>
 								<p>2022年10月1日からマウイ郡ノンミネラルの日焼け止めの流通・販売禁止条例を施行 マウイ郡の条例5306号により、2022年10月1日からマウイ島、ラナイ島、</p>
@@ -839,23 +840,23 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ハワイ州観光局</span>
-							</span>
-							<span class="post-card-pic">
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-03-2.jpeg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
-								<h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
+								<h4>TBSミニ番組　マラマ〜新しいハワイ旅〜</h4>
 								<time datetime="2024.03.21">2024.03.21</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ハワイ州観光局</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-03-3.png" alt="">
 							</div>
@@ -867,23 +868,23 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ハワイ州観光局</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-03-4.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付開始</h4>
+								<h4>ハワイ州観光局、モデルのローラさんをマラマハワイ・アンバサダーに任命</h4>
 								<time datetime="2023.08.18">2023.08.18</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
+							<div class="tax-icon">
 								<span>ハワイ州観光局</span>
-							</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-03-5.jpg" alt="">
 							</div>
@@ -911,25 +912,27 @@
 				<div class="post-card-list">
 					<div class="post-card active">
 						<a href="">
-							<span class="tax-icon">アロハ・オーシャン・プラス(Aloha Ocean Plus)</span>
-							<span class="post-card-pic">
+							<div class="tax-icon">
+								<span>アロハ・オーシャン・プラス(Aloha Ocean Plus)</span>
+							</div>
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-1.jpeg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
 								<h4>ハワイの海洋保護につながるロコデザイナーによる　　エコボトルが新登場</h4>
 								<p>ハワイ発サーフブランドのローカルモーションハワイから、ハワイの海洋生物をモチーフにしたエコボトルが限定発売されました。 人気ブランド”アドベンチャーハワイ”のボ</p>
-								<time datetime="2024.03.21">2024.03.21</time>
+								<time datetime="2028.08.01">2023.08.01</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="post-card-pic">
+							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-2.jpg" alt="">
-							</span>
+							</div>
 							<div class="post-card-txt">
-								<h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
-								<time datetime="2024.03.21">2024.03.21</time>
+								<h4>Zero Waste Oahu(ゼロウェイストオアフ)の取り組み</h4>
+								<time datetime="2022.07.20">2022.07.20</time>
 							</div>
 						</a>
 					</div>
@@ -940,7 +943,7 @@
 							</div>
 							<div class="post-card-txt">
 								<h4>サスティナブル・コーストラインズ・ハワイ、第二回クリーンアップイベント「The Kaimukī Cleanup Festival 」に参加</h4>
-								<time datetime="2023.11.09">2023.11.09</time>
+								<time datetime="2022.06.20">2022.06.20</time>
 							</div>
 						</a>
 					</div>
@@ -953,8 +956,8 @@
 								<img src="./malamahawaii_picture/post-card-04-4.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付開始</h4>
-								<time datetime="2023.08.18">2023.08.18</time>
+								<h4>地上最古の海洋生物の一種であるウミガメ　彼らを絶滅の危機から保護する「マラマ イ ナ ホヌ」</h4>
+								<time datetime="2022.05.26">2022.05.26</time>
 							</div>
 						</a>
 					</div>
@@ -967,8 +970,8 @@
 								<img src="./malamahawaii_picture/post-card-04-5.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>サステナブルなアートとファッションをテーマにしたイベント「THINK GLOBALLY, ACT LOCALLY」を開催</h4>
-								<time datetime="2023.07.20">2023.07.20</time>
+								<h4>サステナブルなアートとファッションをテーマにしたイベントを開催</h4>
+								<time datetime="2022.04.23">2022.04.23</time>
 							</div>
 						</a>
 					</div>
