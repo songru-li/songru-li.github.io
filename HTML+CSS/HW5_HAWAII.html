@@ -21,12 +21,16 @@
 			top: 0;
 			z-index: 3;
 		}
+		#menu-switch {
+			display: none;
+		}
 		.search {
 			width: 5%;
 			margin: 0 2%;
 		}
 		.search-logo img{
 			width: 80%;
+			cursor: pointer;
 		}
 		.search-p {
 			font-size: 10px;
@@ -161,7 +165,7 @@
 		}
 		.card{
 			display: inline-flex;
-			max-width: 320px;
+			max-width: 300px;
 			position: relative;
 			margin: 20px 10px;
 		}
@@ -183,7 +187,7 @@
 			margin: 20px;
 		}
 		.card-title {
-			font-size: 20px;
+			font-size: 3vw;
 			font-weight: bold;
 		}
 		.card-more {
@@ -194,13 +198,13 @@
 			font-weight: bolder;
 			text-align: center;
 			border: 1px solid #fff;
-			border-top-left-radius: 18% 50%;
+			/* border-top-left-radius: 18% 50%;
 			border-top-right-radius: 18% 50%;
 			border-bottom-right-radius: 18% 50%;
-			border-bottom-left-radius: 18% 50%;
+			border-bottom-left-radius: 18% 50%; */
+			border-radius: 40px;
 			padding: 0 15px;
-			position: relative;
-			margin-top: -120px;
+			margin-bottom: 100%;
 		}
 		.card-txt:hover .card-more {
 			background-color: #fff;
@@ -222,7 +226,7 @@
 			margin: -20px;
 			opacity: 0;
 			border-radius: 10px;
-			padding: 220px 20px 0;
+			padding: 180px 20px 0;
 		}
 		.card-txt p:hover {
 			opacity: 1;
@@ -250,21 +254,38 @@
 		}
 		.post-card-list {
 			display: grid;
-			grid-template-rows: repeat(1,1fr);
+			grid-template: repeat(4, auto)/repeat(2, 1fr);
+		}
+		.post-card {
+			width: 95%;
+			margin: 10px auto;
 		}
 		.tax-icon {
 			width: 100%;
-			height: 25px;
-			font-size: 15px;
+			height: 20px;
+			margin-bottom: 5px;
 			color: #000;
+			position: relative;
+			overflow: hidden;
+		}
+		.tax-icon::after {
+			position: absolute;
+			content: "";
+			width: 60px;
+			height: 100%;
+			top: 0;
+			right: 0;
+			background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
 		}
 		.tax-icon img {
 			height: 20px;
 			vertical-align: top;
 		}
-		.post-card {
-			width: 95%;
-			margin: 10px auto;
+		.tax-icon span {
+			font-size: 10px;
+		}
+		.post-card-list a {
+			text-decoration: none;
 		}
 		.active {
 			width: 97.5%;
@@ -282,9 +303,7 @@
 		.post-card-pic img:hover {
 			opacity: 0.6;
 		}
-		.post-card-list a {
-			text-decoration: none;
-		}
+
 		.post-card-txt {
 			color: #000;
 		}
@@ -397,6 +416,7 @@
 			}
 			.main-top div img {
 				transform: translateY(-60px);
+				border-top-right-radius: 15px;
 				margin-bottom: 0;
 			}
 			.main-top div:nth-child(2) {
@@ -435,6 +455,10 @@
 			.main-bot-about {
 				width: 42.5%;
 				margin: 0 55% 0;
+			}
+			.card-title {
+				font-size: 2vw;
+				font-weight: bold;
 			}
 			.post-title div {
 				display: flex;
@@ -475,6 +499,9 @@
 			.search {
 				width: 15%;
 			}
+			.search-logo {
+				width: 10%;
+			}
 			.hawaiianIsland img {
 				max-height: 3.5vw;
 			}
@@ -501,14 +528,17 @@
 				width: 70%;
 				padding: 0 15%;
 			}
+			.card-title {
+				font-size: 20px;
+			}
+			.card-txt p {
+				font-size: 15px;
+		}
 			.latest {
 				width: 70%;
 			}
 			.main-keep-title {
 				font-size: 2.5vw;
-			}
-			.card-title {
-				font-size: 1.3vw;
 			}
 		}
 	</style>
@@ -518,9 +548,10 @@
 		<header>
 			<div class="header-top">
 				<div class="search">
-					<div class="search-logo">
+					<input type="checkbox" name="" id="menu-switch">
+					<label for="menu-switch" class="search-logo">
 						<img src="./malamahawaii_picture/search.svg" alt="">
-					</div>
+					</label>
 					<div class="search-p">
 						<p>ハワイ州 <br>レスポンシブル・ツーリズム<br>情報サイト</p>
 					</div>
@@ -679,7 +710,7 @@
 								<img src="./malamahawaii_picture/post-card-01-2.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>プリンス・クヒオ・デイ・セレブレーション(Prince Kuhio Day)</h4>
+								<h4>プリンス・クヒオ・デイ・セレブレーション（Prince Kuhio Day Celebration）</h4>
 								<time datetime="2024.03.21">2024.03.21</time>
 							</div>
 						</a>
@@ -694,7 +725,7 @@
 								<img src="./malamahawaii_picture/post-card-01-3.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>グラム発足50周年プログラム発月間　〜日常でできること〜</h4>
+								<h4>11月はサンゴ白化啓発月間　〜日常でできること〜</h4>
 								<time datetime="2023.11.09">2023.11.09</time>
 							</div>
 						</a>
@@ -709,7 +740,7 @@
 								<img src="./malamahawaii_picture/post-card-01-4.png" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付グラム発足</h4>
+								<h4>マウイ島の山火事救援金、日本円で受付開始</h4>
 								<time datetime="2023.08.18">2023.08.18</time>
 							</div>
 						</a>
@@ -717,7 +748,7 @@
 					<div class="post-card">
 						<a href="">
 							<div class="tax-icon">
-								<span>ルチャー</span>
+								<span></span>
 							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-01-5.png" alt="">
@@ -746,7 +777,9 @@
 				<div class="post-card-list">
 					<div class="post-card active">
 						<a href="">
-							<div class="tax-icon">シーライフ・パーク・ハワイ</div>
+							<div class="tax-icon">
+								<span>シーライフ・パーク・ハワイ</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-1.jpg" alt="">
 							</div>
@@ -774,7 +807,7 @@
 					<div class="post-card">
 						<a href="">
 							<div class="tax-icon">
-								<span>キュメンタリ</span>
+								<span></span>
 							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-3.jpg" alt="">
@@ -787,22 +820,28 @@
 					</div>
 					<div class="post-card">
 						<a href="">
+							<div class="tax-icon">
+								<span></span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-4.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>マウイ島の山火事救援金、日本円で受付グラム発足</h4>
+								<h4>第33回タートル・インディペンデンス・デイ開催</h4>
 								<time datetime="2023.08.18">2023.08.18</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
+							<div class="tax-icon">
+								<span>オラカイ株式会社</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-02-5.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>2023年7月後半～9月にハワイで開催されるカルチャーイベント</h4>
+								<h4>「シーアスパラガス」を生産している「オラカイ」のサステナブルな取り組み</h4>
 								<time datetime="2023.07.20">2023.07.20</time>
 							</div>
 						</a>
@@ -921,23 +960,29 @@
 							<div class="post-card-txt">
 								<h4>ハワイの海洋保護につながるロコデザイナーによる　　エコボトルが新登場</h4>
 								<p>ハワイ発サーフブランドのローカルモーションハワイから、ハワイの海洋生物をモチーフにしたエコボトルが限定発売されました。 人気ブランド”アドベンチャーハワイ”のボ</p>
-								<time datetime="2028.08.01">2023.08.01</time>
+								<time datetime="2023.08.01">2023.08.01</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
+							<div class="tax-icon">
+								<span></span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-2.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>Zero Waste Oahu(ゼロウェイストオアフ)の取り組み</h4>
+								<h4>Zero Waste Oahu (ゼロウェイストオアフ) の取り組み</h4>
 								<time datetime="2022.07.20">2022.07.20</time>
 							</div>
 						</a>
 					</div>
 					<div class="post-card">
 						<a href="">
+							<div class="tax-icon">
+								<span>サスティナブル・コーストラインズ・ハワイ（Sustainable Coastlines Hawaii）</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-3.jpeg" alt="">
 							</div>
@@ -949,9 +994,9 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
-								<span>サステナ</span>
-							</span>
+							<div class="tax-icon">
+								<span></span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-4.jpg" alt="">
 							</div>
@@ -963,19 +1008,20 @@
 					</div>
 					<div class="post-card">
 						<a href="">
-							<span class="tax-icon">
-								<span>テーマにしたイ</span>
-							</span>
+							<div class="tax-icon">
+								<span>アウトリガー・ホテルズ＆リゾーツ</span>
+							</div>
 							<div class="post-card-pic">
 								<img src="./malamahawaii_picture/post-card-04-5.jpg" alt="">
 							</div>
 							<div class="post-card-txt">
-								<h4>サステナブルなアートとファッションをテーマにしたイベントを開催</h4>
+								<h4>サステナブルなアートとファッションをテーマにしたイベント「THINK GLOBALLY, ACT LOCALLY」を開催</h4>
 								<time datetime="2022.04.23">2022.04.23</time>
 							</div>
 						</a>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>
