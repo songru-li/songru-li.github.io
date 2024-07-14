@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {}
+        * {
+            list-style: none;
+        }
+        .change-group span {
+            width: fit-content;
+        }
+        .change-group > .btn-group {
+            width: 184px;
+        }
+        #add-all-event {
+            background-color: none;
+            background-image: linear-gradient(to top right, #ff0 20%, red 100%);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #add-all-event:hover {
+            scale: 1.5;
+            transition: 0.5s;
+        }
+        .weeks {
+            grid-template-rows: auto;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .week {
+            height: 30px;
+            border: 4px solid;
+            border-image: linear-gradient(to top left, #f385, #f966) 1;
+        }
+        .dates {
+            grid-template-rows: repeat(5, auto);
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        .block {
+            /* border: 1px solid #ddd; */
+            border: 4px solid;
+            border-image: linear-gradient(to bottom right, #83f5, #69f6) 1;
+        }
+        .day {
+            height: 120px;
+            text-align: end;
+            padding: 5px;
+        }
+        .date-title {
+            display: flex;
+            justify-content: space-between;
+            height: 25px;
+        }
+        .date-title .add-event {
+            color: #00aaf0;
+            font-weight: bolder;
+            background-color: #fff;
+            border-radius: 50%;
+            border-color: #fff;
+            font-size: 22px;
+            height: 22px;
+            width: 22px;
+            opacity: 0;
+            transform: translateX(170px) translateY(-160px) rotate(1800deg);
+            transition: 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .day:hover .date-title .add-event {
+            transform: translateX(0px) translateY(0px) rotate(0deg);
+            opacity: 1;
+        }
+        .date-title .date {
+            margin-left: auto;
+        }
+        .day:hover {
+            box-shadow: 6px 8px #02d5;
+        }
+        .todo-list {
+            padding: 3px;
+            overflow: auto;
+            height: 80px;
+            margin: 0;
+        }
+        .todo-list > .todo {
+            padding: 2px 12px;
+            text-align: start;
+            border-radius: 10px;
+            margin: 3px;
+            height: 30px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .todo-list > .todo:hover {
+            box-shadow: 0 4px 8px #aaa;
+        }
+        .todo-list :nth-child(3n+1) {
+            background-color: #ffeff8;
+            background-image: linear-gradient(to right, #f272f7 7%, #f4d6f7 7%);
+        }
+        .todo-list :nth-child(3n+2) {
+            background-color: #d8f7ff;
+            background-image: linear-gradient(to right, #71cdf1 7%, #dbf5fc 7%);
+        }
+        .todo-list :nth-child(3n+3) {
+            background-color: #e6ffdf;
+            background-image: linear-gradient(to right, #84fac3 7%, #dbfceb 7%);
+        }
+        .color-choose {
+            height: 30px;
+        }
+        .color-choose span {
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="change-group d-flex justify-content-between align-items-center my-4">
+            <h1 class="col-3 fs-1 w-f">CALENDAR</h1>
+            <div class="btn-group col-2 h-50 border " role="group" aria-label="Button group with nested dropdown">
+                <button id="prevyearbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
+                <div class="btn-group col-8" role="group">
+                    <button id="yeardisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown"></button>
+                    <ul id="yeardropdown" class="dropdown-menu" >
+                        <!-- <li><a class="dropdown-item" href="#">2023年</a></li>
+                        <li><a class="dropdown-item" href="#">2025年</a></li> -->
+                    </ul>
+                </div>
+                <button id="nextyearbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
+            </div>
+            <div class="btn-group col-2 h-50 border " role="group" aria-label="Button group with nested dropdown">
+                <button id="prevmonthbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
+                <div class="btn-group col-8" role="group">
+                    <button id="monthdisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul id="monthdropdown" class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">1月</a></li>
+                        <li><a class="dropdown-item" href="#">2月</a></li>
+                        <li><a class="dropdown-item" href="#">3月</a></li>
+                        <li><a class="dropdown-item" href="#">4月</a></li>
+                        <li><a class="dropdown-item" href="#">5月</a></li>
+                        <li><a class="dropdown-item" href="#">6月</a></li>
+                        <li><a class="dropdown-item" href="#">7月</a></li>
+                        <li><a class="dropdown-item" href="#">8月</a></li>
+                        <li><a class="dropdown-item" href="#">9月</a></li>
+                        <li><a class="dropdown-item" href="#">10月</a></li>
+                        <li><a class="dropdown-item" href="#">11月</a></li>
+                        <li><a class="dropdown-item" href="#">12月</a></li>
+                    </ul>
+                </div>
+                <button id="nextmonthbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
+            </div>
+            <button id="add-all-event" class="add-event spinner-grow" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+        </div>
+        <div class="month">
+            <div class="d-grid weeks text-center">
+                <div class="col week">星期日</div>
+                <div class="col week">星期一</div>
+                <div class="col week">星期二</div>
+                <div class="col week">星期三</div>
+                <div class="col week">星期四</div>
+                <div class="col week">星期五</div>
+                <div class="col week">星期六</div>
+            </div>
+            <div class="d-grid dates">
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">37</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">38</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">39</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">40</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">41</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date">42</div>
+                    </div>
+                    <ul class="todo-list">
+                    </ul>
+                </div>
+                <!-- <div class="col block day">
+                    <div class="date-title">
+                        <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                        <div class="date"></div>
+                    </div>
+                    <ul class="todo-list">
+                        <li class="todo">讀書,一直讀讀讀讀讀讀</li>
+                        <li class="todo">懷疑人生</li>
+                        <li class="todo">再度懷疑人生</li>
+                        <li class="todo">三度懷疑人生</li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="staticBackdropLabel">預計行程</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <div class="dropdown col-md-3">
+                                    <div class="col-md-11">
+                                        <select class="form-select" id="validationCustom04" required value="">
+                                            <option selected disabled value="">時間點</option>
+                                            <option value="上午">上午</option>
+                                            <option value="下午">下午</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            請選上午或下午
+                                        </div>
+                                    </div>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item " href="#">上午</a></li>
+                                        <li><a class="dropdown-item" href="#">下午</a></li>
+                                    </ul>
+                                </div>
+                                <input type="text" class="form-control col-5" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text" id="inputGroup-sizing-default">點</span>
+                                <input type="text" class="form-control col-5" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text" id="inputGroup-sizing-default">分</span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">這天想做點...</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <!-- 顏色 之後搭配object再改 -->
+                            <in class="color-choose w-25  input-group mb-3 d-flex">
+                            <span class="input-group-text " id="inputGroup-sizing-default m-auto ">顏色</span>
+                            <input type="color" class="form-control d-block" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="date_template">
+        <div class="col block day">
+            <div class="date-title">
+                <button id="" class="add-event" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+</button>
+                <div class="date"></div>
+            </div>
+            <ul class="todo-list">
+            </ul>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <script src="./calendar_main.js"></script>
+</body>
+</html>
