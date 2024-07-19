@@ -10,6 +10,11 @@
         :root {}
         * {
             list-style: none;
+            /* color: #f80f5f; */
+        }
+        body {
+            background-image: url(./snowflake-image.jpg);
+            background-size: cover;
         }
         .change-group {
             display: flex;
@@ -83,6 +88,7 @@
         }
         
         .day:hover .date-title .add-event {
+            vertical-align: top;
             visibility: visible;
             transform: translateX(0px) rotate(0deg);
             opacity: 1;
@@ -147,7 +153,7 @@
                 <button id="nextmonthbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
             </div>
             <button type="button" class="btn btn-secondary col-lg-2 col-4" id="clear_btn">一鍵清空</button>
-            <button id="add-all-event" class="add-event col-lg-3 col-2" data-bs-toggle="modal" data-bs-target="#modal-item">+</button>
+            <button id="add-all-event" class="add-event col-lg-3 col-2 spinner-grow" data-bs-toggle="modal" data-bs-target="#modal-item">+</button>
             <!-- spinner-grow -->
         </div>
         <div class="month">
@@ -200,7 +206,7 @@
                             <!-- 顏色 之後搭配object再改 -->
                             <div class="w-25 input-group mb-3">
                                 <span class="input-group-text" style="height:30px">顏色</span>
-                                <input type="color" class="form-control" id="event-color" value="#ff0000" style="height:30px">
+                                <input type="color" class="form-control" id="event-color" value="#00a4ff" style="height:30px">
                             </div>
                         </div>
                     </form>
