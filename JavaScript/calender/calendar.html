@@ -16,6 +16,11 @@
             background-image: url(./snowflake-image.jpg);
             background-size: cover;
         }
+        @media screen and (max-width:767px)  {
+            body, .month {
+                width: 750px;
+            }
+        }
         .change-group {
             display: flex;
             justify-content: space-between;
@@ -129,8 +134,8 @@
 <body>
     <div class="container">
         <div class="change-group my-4 row px-2 gap-2">
-            <h1 class="col-lg-4 col-12 fs-1 w-f">CALENDAR</h1>
-            <div class="btn-group col-lg-2 col-6 h-50" role="group" aria-label="Button group with nested dropdown">
+            <h1 class="col-xl-4 fs-1 w-f">CALENDAR</h1>
+            <div class="btn-group col-xl-2 col-md-6 h-50" role="group" aria-label="Button group with nested dropdown">
                 <button id="prevyearbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
                 <div class="btn-group col-8" role="group">
                     <button id="yeardisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown"></button>
@@ -141,7 +146,7 @@
                 </div>
                 <button id="nextyearbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
             </div>
-            <div class="btn-group col-lg-2 col-6 h-50" role="group" aria-label="Button group with nested dropdown">
+            <div class="btn-group col-xl-2 col-md-6 h-50" role="group" aria-label="Button group with nested dropdown">
                 <button id="prevmonthbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
                 <div class="btn-group col-8" role="group">
                     <button id="monthdisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
@@ -152,8 +157,8 @@
                 </div>
                 <button id="nextmonthbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
             </div>
-            <button type="button" class="btn btn-secondary col-lg-2 col-4" id="clear_btn">一鍵清空</button>
-            <button id="add-all-event" class="add-event col-lg-3 col-2 spinner-grow" data-bs-toggle="modal" data-bs-target="#modal-item">+</button>
+            <button type="button" class="btn btn-secondary col-xl-1 col-lg-2 col-sm-4 col-md-4 col-4" id="clear_btn">一鍵清空</button>
+            <button id="add-all-event" class="add-event col-xl-3 spinner-grow" data-bs-toggle="modal" data-bs-target="#modal-item">+</button>
             <!-- spinner-grow -->
         </div>
         <div class="month">
