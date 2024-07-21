@@ -159,6 +159,7 @@ function add_hidden(yearofdate, monthofdate) {
         const addEvent = document.querySelector(`.day:nth-of-type(${i + firstdate.getDay()}) .date-title .add-event`);
         addEvent.addEventListener("click", () => {
             eventDateTime.value = `${yearofdate}-${(monthofdate + 1).toString().padStart(2, '0')}-${(firstdate.getDate() + i - 1).toString().padStart(2, '0')}T00:00`;
+            eventColor.value = color16();
             clearModal();
         })
 
@@ -207,7 +208,7 @@ function add_hidden(yearofdate, monthofdate) {
                 listItems.forEach(li => ul.appendChild(li));
             })
         }
-
+        // console.log(nowdate.format("yyyy-MM-dd"));
     }
 }
 //掛"今日"的監聽器
@@ -218,6 +219,7 @@ addAllEvent.addEventListener("click", () => {
     let nowHours = nowdate.getHours().toString().padStart(2, '0');
     let nowMinute = nowdate.getMinutes().toString().padStart(2, '0');
     eventDateTime.value = `${nowYear}-${(nowMonth + 1).toString().padStart(2, '0')}-${nowDay}T${nowHours}:${nowMinute}`;
+    eventColor.value = color16();
     clearModal();
 });
 //清空modal
@@ -306,7 +308,38 @@ clearBtn.addEventListener("click", () => {
     updateLocalStorage(localStorageData);
     reloadrendering();
     myModal.hide();
-    // window.location.reload();
+    window.location.reload();
 })
-
-
+//滾輪上下滑動月份
+addEventListener("wheel", function (event) {
+    if(event.deltaY < 80) {
+        monthofdate = monthofdate - 1;
+        if (monthofdate < 0) {
+            monthofdate = 11;
+            yearofdate = yearofdate - 1;
+            if (yearofdate === 0) {
+                yearofdate = -1
+            }
+        }
+    }
+    if(event.deltaY > 80) {
+        monthofdate = monthofdate + 1;
+        if (monthofdate > 11) {
+            monthofdate = 0;
+            yearofdate = yearofdate + 1;
+            if (yearofdate === 0) {
+                yearofdate = 1
+            }
+        }
+    }
+    updateYearDisplay();
+    add_hidden(yearofdate,monthofdate);
+});
+//顏色隨機
+function color16() {
+    const r = Math.floor(Math.random()*256);
+    const g = Math.floor(Math.random()*256);
+    const b = Math.floor(Math.random()*256);
+    const color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
+    return color;
+}
