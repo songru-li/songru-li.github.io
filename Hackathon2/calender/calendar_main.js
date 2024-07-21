@@ -271,7 +271,8 @@ function reloadrendering() {
     updateYearDisplay();
 }
 //刪除按鈕
-deleteBtn.addEventListener("click", () => {
+const removeBtn = document.querySelector("#remove_btn");
+removeBtn.addEventListener("click", () => {
     const localStorageData = getTodoListFromStorage();
     let deleteId = parseInt(deleteBtn.getAttribute("data-id"));
     const findtodoId = localStorageData.findIndex((item) => item.id === deleteId);
@@ -305,5 +306,7 @@ clearBtn.addEventListener("click", () => {
     updateLocalStorage(localStorageData);
     reloadrendering();
     myModal.hide();
-    window.location.reload();
+    // window.location.reload();
 })
+
+
