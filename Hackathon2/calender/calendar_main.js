@@ -19,7 +19,6 @@ const myModal = new bootstrap.Modal(Modal);
 const deleteBtn = document.querySelector("#delete_btn");
 const updateBtn = document.querySelector("#update_btn");
 const clearBtn = document.querySelector("#clear_btn");
-const navbar = document.querySelector(".navbar");
 const navbarNav = document.querySelector(".navbar-nav");
 let nowdate = new Date();
 let yearofdate = nowdate.getFullYear();
@@ -157,6 +156,25 @@ function add_hidden(yearofdate, monthofdate) {
     for (let i = 1; i <= lastdate.getDate(); i++) {
         const date = document.querySelector(`.day:nth-of-type(${i + firstdate.getDay()}) .date-title .date`);
         date.textContent = firstdate.getDate() + i - 1;
+        date.style["background-color"] = ""
+        //判斷週六
+        if((parseInt(date.textContent) + firstdate.getDay() - 1) % 7 === 6) {
+            date.classList.add("px-2")
+            date.style["background-color"] = "yellow";
+            date.style["border-radius"] = "50px";
+        }
+        //判斷週日
+        if((parseInt(date.textContent) + firstdate.getDay() - 1) % 7 === 0) {
+            date.classList.add("px-2")
+            date.style["background-color"] = "#f40";
+            date.style["border-radius"] = "50px";
+        }
+        //判斷本日
+        if(yearofdate === nowdate.getFullYear() && monthofdate === nowdate.getMonth() && date.textContent === nowdate.getDate().toString()) {
+            date.classList.add("px-2")
+            date.style["background-color"] = "aqua";
+            date.style["border-radius"] = "50px";
+        }
         //每日事件的監聽器
         const addEvent = document.querySelector(`.day:nth-of-type(${i + firstdate.getDay()}) .date-title .add-event`);
         addEvent.addEventListener("click", () => {
@@ -164,7 +182,7 @@ function add_hidden(yearofdate, monthofdate) {
             eventColor.value = color16();
             clearModal();
         })
-
+        //填入事件格子
         const localStorageData = getTodoListFromStorage();
         const datetime = `${yearofdate}-${(monthofdate + 1).toString().padStart(2, '0')}-${(firstdate.getDate() + i - 1).toString().padStart(2, '0')}`
         date.closest(".day").querySelector("ul").innerHTML= ""
@@ -210,7 +228,6 @@ function add_hidden(yearofdate, monthofdate) {
                 listItems.forEach(li => ul.appendChild(li));
             })
         }
-        // console.log(nowdate.format("yyyy-MM-dd"));
     }
 }
 //掛"今日"的監聽器
@@ -346,9 +363,6 @@ function color16() {
     const color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
     return color;
 }
-// navbar.addEventListener("click", () => {
-//     reloadrendering();
-// })
 //新增漢堡清單列表
 function CALENDAR_List() {
     navbarNav.innerHTML = "";
