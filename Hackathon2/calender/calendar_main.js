@@ -19,6 +19,8 @@ const myModal = new bootstrap.Modal(Modal);
 const deleteBtn = document.querySelector("#delete_btn");
 const updateBtn = document.querySelector("#update_btn");
 const clearBtn = document.querySelector("#clear_btn");
+const navbar = document.querySelector(".navbar");
+const navbarNav = document.querySelector(".navbar-nav");
 let nowdate = new Date();
 let yearofdate = nowdate.getFullYear();
 let monthofdate = nowdate.getMonth();
@@ -271,6 +273,7 @@ function reloadrendering() {
     clonedates();
     add_hidden(yearofdate, monthofdate);
     updateYearDisplay();
+    CALENDAR_List();
 }
 //刪除按鈕
 const removeBtn = document.querySelector("#remove_btn");
@@ -342,4 +345,49 @@ function color16() {
     const b = Math.floor(Math.random()*256);
     const color = `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
     return color;
+}
+// navbar.addEventListener("click", () => {
+//     reloadrendering();
+// })
+function CALENDAR_List() {
+    navbarNav.innerHTML = "";
+    const localStorageData = getTodoListFromStorage();
+    localStorageData.forEach((x) => {
+        const li = document.createElement("li");
+        li.classList.add("nav-item", "mb-2", "p-1");
+        li.innerHTML = `${x.time.substr(0, 10)} | ${x.time.substr(11, 5)} | ${x.title}`;
+        li.style["background-image"] = `linear-gradient(to right, ${x.color} 30%, ${complementaryColors(x.color)} 50%)`;
+        navbarNav.append(li);
+        //對比色
+        function complementaryColors(hexcolor){
+            var r = 255 - parseInt(hexcolor.substr(1,2),16);
+            var g = 255 - parseInt(hexcolor.substr(3,2),16);
+            var b = 255 - parseInt(hexcolor.substr(5,2),16);
+            // var yiq = ((r*299)+(g*587)+(b*114))/1000;
+            // return (yiq >= 128) ? 'black' : 'white';
+            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+        }
+        li.setAttribute("data-bs-toggle", "modal");
+        li.setAttribute("data-bs-target", "#modal-item")
+        li.addEventListener("click", function() {
+            eventDateTime.value = x.time;
+            eventTitleInput.value = x.title;
+            eventContentInput.value = x.content;
+            eventColor.value = x.color;
+            deleteBtn.classList.remove("d-none");
+            updateBtn.classList.remove("d-none");
+            deleteBtn.setAttribute("data-id", `${x.id}`)
+            updateBtn.setAttribute("data-id", `${x.id}`)
+            addConfirm.innerHTML = "複製";
+        })
+        // 對 <ul> 內的 <li> 進行排序
+        const listItems = Array.from(navbarNav.querySelectorAll("li"));
+        listItems.sort((a, b) => {
+            const timeA = a.textContent.split(" | ")[0];
+            const timeB = b.textContent.split(" | ")[0];
+            return timeA.localeCompare(timeB);
+        });
+        navbarNav.innerHTML = "";
+        listItems.forEach(li => navbarNav.appendChild(li));
+    })
 }

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,31 +9,40 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         :root {}
+
         * {
             list-style: none;
             /* color: #f80f5f; */
         }
+
         body {
             background-image: url(./snowflake-image.jpg);
             background-size: cover;
         }
-        @media screen and (max-width:767px)  {
-            body, .month {
+
+        @media screen and (max-width:767px) {
+
+            body,
+            .month {
                 width: 750px;
             }
         }
+
         h1 a img {
             width: 60px;
         }
+
         .change-group {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         #yeardropdown {
             height: 300px;
             overflow: auto;
         }
+
         #add-all-event {
             background-color: none;
             background-image: linear-gradient(to top right, #ff0 20%, red 100%);
@@ -45,25 +55,30 @@
             justify-content: center;
             align-items: center;
         }
+
         #add-all-event:hover {
             scale: 1.5;
             transition: 0.5s;
         }
+
         .weeks {
             grid-template-rows: auto;
             grid-template-columns: repeat(7, 1fr);
             margin-bottom: 10px;
             text-align: center;
         }
+
         .week {
             height: 30px;
             border: 4px solid;
             border-image: linear-gradient(to top left, #f385, #f966) 1;
         }
+
         #dates {
             grid-template-rows: repeat(5, auto);
             grid-template-columns: repeat(7, 1fr);
         }
+
         .day {
             border: 4px solid;
             border-image: linear-gradient(to bottom right, #83f5, #69f6) 1;
@@ -72,11 +87,13 @@
             text-align: end;
             padding: 5px;
         }
+
         .date-title {
             display: flex;
             justify-content: space-between;
             height: 25px;
         }
+
         .date-title .add-event {
             color: #00aaf0;
             font-weight: bolder;
@@ -94,26 +111,30 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .day:hover .date-title .add-event {
             vertical-align: top;
             visibility: visible;
             transform: translateX(0px) rotate(0deg);
             opacity: 1;
         }
+
         .date-title .date {
             margin-left: auto;
         }
+
         .day:hover {
             box-shadow: 6px 8px #02d5;
         }
+
         .todo-list {
             padding: 2px;
             overflow: auto;
             height: 80px;
             margin: 0;
         }
-        .todo-list > .todo {
+
+        .todo-list>.todo {
             padding: 2px 4px;
             text-align: start;
             border-radius: 10px;
@@ -122,30 +143,54 @@
             cursor: pointer;
             overflow: hidden;
         }
-        .todo-list > .todo:hover {
+
+        .todo-list>.todo:hover {
             box-shadow: 0 4px 8px #aaa;
         }
+
         .color-choose {
             height: 30px;
         }
+
         .color-choose span {
             height: 30px;
             vertical-align: middle;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="change-group my-4 row px-2 gap-2">
+            <span class="col-xl-1">
+                <button class="navbar navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">行事曆清單</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <!-- <li class="nav-item">123</li> -->
+                        </ul>
+                    </div>
+                </div>
+            </span>
             <h1 class="col-xl-4 fs-1 w-f">
-                <a href="https://songru-li.github.io/Hackathon2/calender/calendar.html"><img src="./9-01.png" alt=""></a>
+                <a href="http://127.0.0.1:5500/calender/calendar.html"><img src="./9-01.png" alt=""></a>
                 CALENDAR
             </h1>
             <div class="btn-group col-xl-2 col-6 h-50" role="group" aria-label="Button group with nested dropdown">
                 <button id="prevyearbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
                 <div class="btn-group col-8" role="group">
-                    <button id="yeardisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown"></button>
-                    <ul id="yeardropdown" class="dropdown-menu" >
+                    <button id="yeardisplay" type="button"
+                        class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle"
+                        data-bs-toggle="dropdown"></button>
+                    <ul id="yeardropdown" class="dropdown-menu">
                         <!-- <li><a class="dropdown-item" href="#">2023年</a></li>
                         <li><a class="dropdown-item" href="#">2025年</a></li> -->
                     </ul>
@@ -155,7 +200,9 @@
             <div class="btn-group col-xl-2 col-6 h-50" role="group" aria-label="Button group with nested dropdown">
                 <button id="prevmonthbtn" type="button" class="btn col-2 btn-outline-primary border-end-0">❰</button>
                 <div class="btn-group col-8" role="group">
-                    <button id="monthdisplay" type="button" class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <button id="monthdisplay" type="button"
+                        class="btn btn-outline-primary border-end-0 border-start-0 dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul id="monthdropdown" class="dropdown-menu">
                         <!-- <li><a class="dropdown-item" href="#">1月</a></li>
                         <li><a class="dropdown-item" href="#">2月</a></li> -->
@@ -163,8 +210,10 @@
                 </div>
                 <button id="nextmonthbtn" type="button" class="btn col-2 btn-outline-primary border-start-0">❱</button>
             </div>
-            <button type="button" class="btn btn-secondary col-xl-1 col-lg-2 col-sm-4 col-md-4 col-4"  data-bs-toggle="modal" data-bs-target="#modal-clear">一鍵清空</button>
-            <button id="add-all-event" class="add-event col-xl-3 spinner-grow" data-bs-toggle="modal" data-bs-target="#modal-item">+</button>
+            <button type="button" class="btn btn-secondary col-xl-1 col-lg-2 col-sm-4 col-md-4 col-4"
+                data-bs-toggle="modal" data-bs-target="#modal-clear">一鍵清空</button>
+            <button id="add-all-event" class="add-event col-xl-3 spinner-grow" data-bs-toggle="modal"
+                data-bs-target="#modal-item">+</button>
             <!-- spinner-grow -->
         </div>
         <div class="month">
@@ -228,7 +277,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-item" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-item-label" aria-hidden="true">
+    <div class="modal fade" id="modal-item" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="modal-item-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -253,13 +303,16 @@
                             <!-- 顏色 之後搭配object再改 -->
                             <div class="w-25 input-group mb-3">
                                 <span class="input-group-text" style="height:30px">顏色</span>
-                                <input type="color" class="form-control" id="event-color" value="#00a4ff" style="height:30px">
+                                <input type="color" class="form-control" id="event-color" value="#00a4ff"
+                                    style="height:30px">
                             </div>
                         </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_btn">取消</button>
-                        <button type="button" class="btn btn-danger d-none" data-bs-toggle="modal" data-bs-target="#modal-delete" id="delete_btn">刪除</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            id="cancel_btn">取消</button>
+                        <button type="button" class="btn btn-danger d-none" data-bs-toggle="modal"
+                            data-bs-target="#modal-delete" id="delete_btn">刪除</button>
                         <button type="button" class="btn btn-success d-none" id="update_btn">更新</button>
                         <button type="button" class="btn btn-primary" id="add-confirm">新增</button>
                     </div>
@@ -285,4 +338,5 @@
         crossorigin="anonymous"></script>
     <script src="./calendar_main.js"></script>
 </body>
+
 </html>
