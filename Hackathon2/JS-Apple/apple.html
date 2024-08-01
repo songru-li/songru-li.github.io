@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apple iPad</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <style>
+        .head {
+            font-size: 12px;
+        }
+        li {
+            list-style: none;
+        }
+        .logo-img {
+            width: 60%;
+        }
+        .head-list {
+            display: none;
+        }
+        .new {
+            font-size: 12px;
+            color: #f60;
+            font-weight: bolder;
+            margin-bottom: -5px;
+        }
+        .nav-item {
+            padding-left: 3%;
+        }
+        .title h1 {
+            font-size: 40px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bolder;
+        }
+        .about div {
+            width: max-content;
+            margin: 20px 0px;
+            font-size: 12px;
+            padding: 10px 20px;
+            background-color: #eee;
+            border-radius: 50px;
+        }
+        .btn {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            height: 100px;
+        }
+        .carousel-item img{
+            border-radius: 30px;
+            aspect-ratio: 16/9;
+        }
+        .carousel-item {
+            padding: 0 5%;
+        }
+        .color img {
+            width: 15%;
+            margin-bottom: 10px;
+        }
+        .ipad-rom div {
+            height: 80px;
+        }
+        .size-about, .rom-about {
+            margin-bottom: 20px;
+            font-size: 12px;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 10px;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #fff;
+            box-shadow: none;
+        }
+        .rom > label > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .foot div {
+            font-size: 12px;
+        }
+        #eleven-inch:checked + label,
+        #thirteen-inch:checked + label,
+        #ipad-color-A:checked + label,
+        #ipad-color-B:checked + label,
+        #ipad-color-C:checked + label,
+        #ipad-color-D:checked + label,
+        #ipad-rom-A:checked + label,
+        #ipad-rom-B:checked + label,
+        #ipad-rom-C:checked + label,
+        #ipad-rom-D:checked + label {
+            border: 2px solid #00c;
+        }
+        @media screen and (min-width:992px)  {
+            .logo-img {
+                width: 0%;
+            }
+            .head-list {
+                display: flex;
+                cursor: pointer;
+            }
+            .head > li:last-child, #navbarSupportedContent {
+                display: none;
+            }
+            .title {
+                display: flex;
+                justify-content: space-between;
+            }
+            .color img {
+                width: 20%;
+                margin-bottom: 10px;
+            }
+            .products {
+                display: flex;
+                position: relative;
+            }
+            .products-select {
+                width: 30%;
+            }
+            .rom > label > div {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="head w-75 m-auto d-flex justify-content-around align-items-center">
+            <li class="logo-img">
+                <img src="./photo/apple-logo.png" alt="" width="15px">
+            </li>
+            <li class="head-list">商店</li>
+            <li class="head-list dropdown-center">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mac
+                </span>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">研發中</li>
+                </ul>
+            </li>
+            <li class="head-list dropdown-center ipad">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    iPad
+                </span>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item ipadAir">iPad Air</li>
+                    <li class="dropdown-item ipadpro">iPad Pro</li>
+                </ul>
+            </li>
+            <li class="head-list dropdown-center">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    iPhone
+                </span>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">研發中</li>
+                </ul>
+            </li>
+            <li class="head-list dropdown-center">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Watch
+                </span>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">研發中</li>
+                </ul>
+            </li>
+            <li class="head-list dropdown-center">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    AirPods
+                </span>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">研發中</li>
+                </ul>
+            </li>
+            <li class="head-list dropdown-center">
+                <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    TV和家庭
+                </span>
+                <!-- <ul class="dropdown-menu">
+                    <li class="dropdown-item">研發中</li>
+                </ul> -->
+            </li>
+            <li class="head-list">娛樂</li>
+            <li class="head-list">配件</li>
+            <li class="head-list">支援服務</li>
+            <li class="logo-search">
+                <img src="./photo/Search_Icon.png" alt="" width="20px">
+            </li>
+            <li class="logo-shop">
+                <img src="./photo/shoppingbag-logo.png" alt="" width="20px">
+            </li>
+            <li>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav order-1 mb-2 mb-lg-0">
+                <li class="nav-item nav-link fw-bolder">商店</li>
+                <li class="nav-item nav-link fw-bolder">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mac
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item">研發中</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder ipad">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        iPad
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item ipadAir">iPad Air</li>
+                        <li class="dropdown-item ipadpro">iPad Pro</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        iPhone
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item">研發中</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Watch
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item">研發中</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        AirPods
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item">研發中</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder">
+                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        TV和家庭
+                    </span>
+                    <ul class="dropdown-menu dropdown-center">
+                        <li class="dropdown-item">研發中</li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-link fw-bolder">娛樂</li>
+                <li class="nav-item nav-link fw-bolder">配件</li>
+                <li class="nav-item nav-link fw-bolder">支援服務</li>
+            </ul>
+        </div>
+    </nav>
+    <div class="">
+        <div class="title my-3 w-75 m-auto">
+            <div>
+                <p class="new">全新</p>
+                <h1>
+                    <span>購買 </span>
+                    <span></span>
+                </h1>
+                <span class="price">NT$34,900</span>
+                <span>起</span>
+            </div>
+            <div class="about">
+                <div>透過換購，可獲享 NT$1,100–NT$36,900 折抵優惠**</div>
+                <div>可選用零利率分期付款，最長可達 12 月</div>
+            </div>
+        </div>
+        <div class="row w-75 m-auto">
+            <div id="carouselExampleControlsNoTouching" class="carousel slide col-lg-8 col-xl-9" data-bs-touch="true">
+                <div class="carousel-inner sticky-top">
+                    <div class="carousel-item active">
+                        <img src="" class="w-100" alt="圖片等待中">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="" class="w-100" alt="圖片等待中">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev"></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next"></button>
+                </div>
+            </div>
+
+            <template id="photo-template">
+                <div class="carousel-inner sticky-top">
+                    <div class="carousel-item active">
+                        <img src="" class="w-100" alt="圖片等待中">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="" class="w-100" alt="圖片等待中">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="" class="w-100" alt="圖片等待中">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev"></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next"></button>
+                </div>
+            </template>
+
+            <div class="products col-lg-4 col-xl-3">
+                    <div class="col-12">
+                        <div class="size row justify-content-around">
+                            <h3 class="col-11">
+                                <span>機型。</span>
+                                <span>選擇尺寸。</span>
+                            </h3>
+                            <input type="radio" class="btn-check" name="size" id="eleven-inch" autocomplete="off">
+                            <label class="btn col-11 d-flex align-items-center justify-content-between" for="eleven-inch">
+                                <div>
+                                    <h4 class="text-start">11吋機型</h4>
+                                    <span>Ultra Retina XDR顯示器</span>
+                                </div>
+                                <div>
+                                    <span class="size-price">NT$34,900</span>
+                                    <span>起</span>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="size" id="thirteen-inch" autocomplete="off">
+                            <label class="btn col-11 d-flex align-items-center justify-content-between" for="thirteen-inch">
+                                <div>
+                                    <h4 class="text-start">13吋機型</h4>
+                                    <span>Ultra Retina XDR顯示器</span>
+                                </div>
+                                <div>
+                                    <span class="size-price">NT$45,900</span>
+                                    <span>起</span>
+                                </div>
+                            </label>
+                            <div class="size-about">
+                                <div>想進一步了解 Ultra Retina XDR？</div>
+                                <div>我們最先進的顯示器，全然投入的視覺體驗。</div>
+                            </div>
+                        </div>
+                        <div class="color row justify-content-around">
+                            <h3>
+                                <span>外觀。</span>
+                                <span>挑選喜愛的顏色。</span>
+                            </h3>
+                            <input type="radio" class="btn-check" name="color" id="ipad-color-A" autocomplete="off">
+                            <label class="btn col-5 d-flex align-items-center" for="ipad-color-A">
+                                <div>
+                                    <img src="./photo/ipad-pro-finish-silver-2024.png" alt="">
+                                    <div class="ipad-color"></div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="color" id="ipad-color-B" autocomplete="off">
+                            <label class="btn col-5 d-flex align-items-center" for="ipad-color-B">
+                                <div>
+                                    <img src="./photo/ipad-pro-finish-space-black-2024.png" alt="">
+                                    <div class="ipad-color"></div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="color" id="ipad-color-C" autocomplete="off">
+                            <label class="btn col-5 d-flex align-items-center d-none" for="ipad-color-C">
+                                <div>
+                                    <img src="./photo/ipad-pro-finish-space-black-2024.png" alt="">
+                                    <div class="ipad-color"></div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="color" id="ipad-color-D" autocomplete="off">
+                            <label class="btn col-5 d-flex align-items-center d-none" for="ipad-color-D">
+                                <div>
+                                    <img src="./photo/ipad-pro-finish-space-black-2024.png" alt="">
+                                    <div class="ipad-color"></div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="rom row justify-content-around">
+                            <h3>
+                                <span>儲存裝置。</span>
+                                <span>選擇需要的儲存空間大小。</span>
+                            </h3>
+                            <input type="radio" class="btn-check" name="capacity" id="ipad-rom-A" autocomplete="off">
+                            <label class="btn col-5 col-lg-11 ipad-rom" for="ipad-rom-A">
+                                <div id="capacity-A">
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-capacity-num">256</span>
+                                        <span class="rom-capacity-byte">GB¹</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-price">NT$34,900</span>
+                                        <span>起</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="capacity" id="ipad-rom-B" autocomplete="off">
+                            <label class="btn col-5 col-lg-11 ipad-rom" for="ipad-rom-B">
+                                <div id="capacity-B">
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-capacity-num">512</span>
+                                        <span class="rom-capacity-byte">GB¹</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-price">NT$41,900</span>
+                                        <span>起</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="capacity" id="ipad-rom-C" autocomplete="off">
+                            <label class="btn col-5 col-lg-11 ipad-rom" for="ipad-rom-C">
+                                <div id="capacity-C">
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-capacity-num">1</span>
+                                        <span class="rom-capacity-byte">TB¹</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-price">NT$55,900</span>
+                                        <span>起</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <input type="radio" class="btn-check" name="capacity" id="ipad-rom-D" autocomplete="off">
+                            <label class="btn col-5 col-lg-11 ipad-rom" for="ipad-rom-D">
+                                <div id="capacity-D">
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-capacity-num">2</span>
+                                        <span class="rom-capacity-byte">TB¹</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="rom-price">NT$69,900</span>
+                                        <span>起</span>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="rom-about">
+                                <div>不確定需要多少儲存空間？</div>
+                                <div>更加了解你需要多少儲存空間。</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="price-buy fw-bolder">NT$34,900</h3>
+                            <span id="Checkout-A"></span>
+                            <span id="Checkout-B"></span>
+                            <span id="Checkout-C"></span>
+                            <span id="Checkout-D"></span>
+                            <hr>
+                            <div class="col-12">
+                                <input type="button" class="bg-primary text-white col-12" value="加入購物袋">
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion accordion-flush mt-5" id="accordionFlushExample">
+        <div class="accordion-item w-75 m-auto">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fs-2 fw-bolder shadow-none" type="button" data-bs-toggle="collapse"data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    常見問題
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item border-white">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-1" aria-expanded="false" aria-controls="common-problem-1">
+                                哪一款 Apple Pencil 適用於這款 iPad？
+                            </button>
+                        </h3>
+                        <div id="common-problem-1" class="accordion-collapse collapse">
+                            <p class="accordion-body">Apple Pencil Pro 與 Apple Pencil (USB-C) 均相容於這款 iPad Pro。</p>
+                            <p class="accordion-body">Apple Pencil Pro 透過無線方式配對，並以磁力吸附，方便充電及收納。</p>
+                            <p class="accordion-body">Apple Pencil (USB-C) 透過 USB-C 充電連接線配對，並以磁力吸附，方便收納。</p>
+                        </div>
+                        <hr class="m-0">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-2" aria-expanded="false" aria-controls="common-problem-2">
+                                哪一款鍵盤適用於這款 iPad？
+                            </button>
+                        </h3>
+                        <div id="common-problem-2" class="accordion-collapse collapse">
+                            <p class="accordion-body">適用於 iPad Pro 的巧控鍵盤。另有第三方鍵盤可供選擇。</p>
+                        </div>
+                        <hr class="m-0">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-3" aria-expanded="false" aria-controls="common-problem-3">
+                                顯示器玻璃選項有何差別？
+                            </button>
+                        </h3>
+                        <div id="common-problem-3" class="accordion-collapse collapse">
+                            <p class="accordion-body">iPad Pro 提供兩種抗反射玻璃選項。標準玻璃具有業界領先的抗反射鍍膜，讓你看得舒服、清晰。在日照強烈或光線明亮的工作環境中，Nano-texture 玻璃能進一步將眩光減到最少，呈現出色的影像品質。1TB 與 2TB 機型可選配 Nano-texture 玻璃。</p>
+                        </div>
+                        <hr class="m-0">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-4" aria-expanded="false" aria-controls="common-problem-4">
+                                這款 iPad 使用哪一種 SIM 卡？
+                            </button>
+                        </h3>
+                        <div id="common-problem-4" class="accordion-collapse collapse">
+                            <p class="accordion-body">iPad Pro 內建 eSIM 技術，啟用行動數據方案快速、便利又安全。你可以透過幾種方式在 iPad 上啟用 eSIM，包括從另一部 iPad 移轉、加入現有的 iPhone 行動網路服務方案、在「設定」中加入新的方案、掃描行動條碼，或是使用電信業者的 app*。有了 eSIM，你便能在全球 190 多個國家或地區，選擇使用特定電信業者提供的行動數據方案。 進一步了解如何設定 eSIM。</p>
+                            <p class="accordion-body">* 並非所有電信業者均支援 eSIM。詳情請洽詢你的電信業者。eSIM 技術適用於 iPad Pro (M4)、11 吋 iPad Pro (第 1 代至第 4 代)、12.9 吋 iPad Pro (第 3 代至第 6 代)、iPad Air (M2)、iPad Air (第 3 代至第 5 代)、iPad (第 7 代或後續機型) 與 iPad mini (第 5 代與第 6 代)。</p>
+                        </div>
+                        <hr class="m-0">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-5" aria-expanded="false" aria-controls="common-problem-5">
+                                Apple Trade In 換購方案如何運作？
+                            </button>
+                        </h3>
+                        <div id="common-problem-5" class="accordion-collapse collapse">
+                            <p class="accordion-body">透過 Apple Trade In 換購方案，以符合條件的 iPad 輕鬆換購。只須回答幾個關於機型和裝置狀況的問題後，我們便會提供預估的折抵換購價值**。如果你的裝置不符合換購條件，我們也會提供簡易的方法將其免費回收處理。</p>
+                            <p class="accordion-body">如果你的 iPad 符合換購條件且你接受換購估價，我們在寄送新 iPad 外，還會另外寄送免費的換購套件 (你不須額外付費)，讓你可以在 14 天的退貨期內寄回你現有的 iPad。</p>
+                            <p class="accordion-body">我們收到 iPad 後，便會檢查並核實你的裝置狀況。如果裝置狀況符合你先前的描述，你不須採取額外行動。如果裝置狀況不符合你先前的描述，我們將提供新的折抵換購價值給你。你可以選擇接受或拒絕修改後的價值，我們將向你確認是否想繼續辦理折抵換購。</p>
+                            <p class="accordion-body">換購流程可能須費時最多達 2 至 3 週。</p>
+                            <p class="accordion-body">你也可以在 Apple 直營店購買時換購你的裝置，但是店內的折抵換購價值可能與在線上收到的預估折抵換購價值有所差異。</p>
+                        </div>
+                        <hr class="m-0">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#common-problem-6" aria-expanded="false" aria-controls="common-problem-6">
+                                AppleCare+ 服務專案包含哪些內容？
+                            </button>
+                        </h3>
+                        <div id="common-problem-6" class="accordion-collapse collapse">
+                            <p class="accordion-body">
+                                適用於 iPad 的 AppleCare+ 服務專案是一項保險產品，為 iPad、Apple Pencil 與 Apple 品牌 iPad 鍵盤提供長達兩年的專家技術支援和硬體保固，包括不限次數的意外損壞保固服務，每次須收取自負額，對螢幕維修收取 NT$900，對 11 吋 iPad Pro (M4)、13 吋 iPad Pro (M4)、11 吋 iPad Air (M2) 與 13 吋 iPad Air (M2) 機型的其他意外損壞收取 NT$3,200；對所有其他 iPad 機型的意外損壞收取 NT$1,600，對 Apple Pencil 或 Apple 品牌 iPad 鍵盤收取 NT$900。AppleCare+ 服務專案自你專案購買日起開始生效。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot w-100" style="background-color:#eee">
+        <div class="w-75 m-auto mt-5 pt-3">
+            <p>價格皆含稅與運送費用。</p>
+            <p>* 上述費用為近似值，可能會隨時間變動。</p>
+            <p>** 折抵換購服務由 Apple 的換購服務合作夥伴提供。折抵金額報價僅為預估價，實際折抵換購價值可能低於估價。實際換購估價視你折抵換購裝置的狀況、推出年份與機型而有所差異。並非所有裝置均符合折抵條件。你必須已達法定成年年齡，才有折抵換購的資格，以獲享折抵優惠或取得 Apple Store 禮品卡。你現有裝置的價值，可能適用於購買新 Apple 裝置。實際獲得的換購價值，是根據收到符合條件的裝置，是否吻合你在估價時所提供的描述而定。可能須按照新裝置的全額售價繳納加值型營業稅。店內換購須出示政府核發的有效照片證件，才能享有此項優惠 (當地法律可能要求保存這份資訊)。優惠可能無法在所有直營店提供，線上和店內折抵換購的估價可能會有所不同。部分直營店可能會有額外的要求。Apple 直營店不提供電腦換購。Apple 的換購服務合作夥伴保留以任何理由拒絕、取消任何折抵換購交易，或限制接受任何裝置 (及其數量) 參與本優惠的權利。更多詳情可自 Apple 的換購服務合作夥伴取得，以了解符合換購及回收條件的裝置。須遵守 Apple 的換購服務合作夥伴所訂立的其他條款。</p>
+            <p>°° 優惠適用於符合資格的訂戶使用符合條件的裝置。符合條件的裝置因優惠而異。免費試用結束後，每項服務將依你所在地區每月適用的價格續訂，直到取消為止。每個 Apple ID 於每項服務僅可獲享一次優惠，並且在適用情況下，如果你是「家人共享」群組的成員，不論你或家人購買多少部裝置，每個家庭僅可獲享一次優惠。每項優惠須在符合條件裝置啟用後的 3 個月內訂閱。須使用相容的硬體與軟體。須遵守相關條款。</p>
+            <p>僅限新訂戶和符合資格的重新訂閱用戶。免費試用結束後，每月 NT$250。每個 Apple ID 僅可獲享一次優惠，如果你是「家人共享」群組的成員，不論你或家人購買多少部裝置，每個家庭僅可獲享一次優惠。如果你或你的家人之前已接受 Apple TV+ 三個月或一年免費訂閱服務優惠，則不再適用此優惠。優惠在符合條件裝置啟用後的 3 個月內有效。訂閱方案將自動續訂直到取消為止。須受限制與其他條款約束。</p>
+            <p>※ 使用 Apple TV+ 與 Apple Arcade 須訂閱服務。</p>
+            <p>§§ 優惠價格適用於符合資格的顧客。如須進一步了解如何獲享優惠價資格，請洽詢直營店內的 Apple 專員，或致電 0800-020-021 與我們聯繫。</p>
+            <p>1. 可用儲存空間會隨著眾多因素而減少並有所差異。儲存容量會隨軟體版本、設定與 iPad 機型而有所變動。1GB = 10 億位元組；1TB = 1 兆位元組。格式化後的實際容量可能較少。</p>
+            <p>2. 顯示器採用圓角設計。以矩形對角線量測時，13 吋 iPad Pro 機型為 13 吋；11 吋 iPad Pro 機型為 11.1 吋；13 吋 iPad Air 機型為 12.9 吋；11 吋 iPad Air 機型為 10.86 吋；10.9 吋 iPad 機型為 10.86 吋；8.3 吋 iPad mini 機型為 8.3 吋。實際可視區較小。</p>
+            <p>以矩形對角線量測時，13 吋 iPad Air 機型為 12.9 吋；11 吋 iPad Air 機型為 10.86 吋。實際可視區較小。</p>
+            <p>配件另售，並會隨供應狀況而有所變動。</p>
+            <p>◊◊◊ 符合資格的購買者在符合資格的地點購買符合條件的產品時，同時搭配促銷優惠產品，可獲得促銷優惠金額。每位符合資格的購買者在購買符合條件的產品時，僅限搭配購買一件促銷優惠產品。優惠會隨供應狀況而有所變動。須遵守此處所列的條款與約定。</p>
+            <p>我們會透過你的網際網路 IP 位址所對應的地理區域，或你上次瀏覽 Apple 網站輸入的位置資訊，估計你的約略位置。</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="./apple-main.js"></script>
+</body>
+
+</html>
